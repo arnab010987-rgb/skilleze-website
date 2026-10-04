@@ -1,0 +1,719 @@
+/**
+ * Skilleze Technologies — Modern Design System (CSS3)
+ * Crafted for high-impact aesthetics, conversion focus, and lightning performance.
+ * Preserves brand identity: Gold (#FDD42A), Cyan (#02C5FB), Magenta (#E4007C).
+ */
+
+/* ==========================================================================
+   1. CSS Custom Properties & Design Tokens
+   ========================================================================== */
+:root {
+  /* Brand Core Accents */
+  --gold-400: #FDD42A;
+  --gold-500: #F3B700;
+  --gold-300: #FFE566;
+  --gold-900: #7A5200;
+  --gold-text: #FDD42A;
+  --gold-glow: rgba(253, 212, 42, 0.28);
+  --gold-subtle: rgba(253, 212, 42, 0.12);
+
+  --cyan-500: #02C5FB;
+  --cyan-400: #38D4FC;
+  --cyan-600: #00A3D4;
+  --cyan-glow: rgba(2, 197, 251, 0.28);
+  --cyan-subtle: rgba(2, 197, 251, 0.12);
+
+  --magenta-500: #E4007C;
+  --magenta-400: #F52796;
+  --magenta-glow: rgba(228, 0, 124, 0.28);
+  --magenta-subtle: rgba(228, 0, 124, 0.12);
+
+  --emerald-500: #10B981;
+  --emerald-400: #34D399;
+  --whatsapp-green: #25D366;
+  --whatsapp-dark: #075E54;
+  --whatsapp-teal: #128C7E;
+
+  /* Sophisticated Dark Mode Surface Hierarchy */
+  --surface-950: #08090C; /* Deepest canvas */
+  --surface-900: #0F1117; /* Card / Panel surface */
+  --surface-850: #151821; /* Elevated card surface */
+  --surface-800: #1B1F2C; /* Input & Hover surface */
+  --surface-700: #262B3D; /* Highlighted container */
+
+  /* Lines & Borders */
+  --line: rgba(255, 255, 255, 0.09);
+  --line-strong: rgba(255, 255, 255, 0.16);
+  --line-gold: rgba(253, 212, 42, 0.35);
+  --line-cyan: rgba(2, 197, 251, 0.35);
+  --line-magenta: rgba(228, 0, 124, 0.35);
+
+  /* Typography Colors */
+  --text-primary: #F8FAFC;
+  --text-secondary: #CBD5E1;
+  --text-muted: #94A3B8;
+  --text-dim: #64748B;
+
+  /* Shadows & Depth */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.35);
+  --shadow-md: 0 8px 24px -4px rgba(0, 0, 0, 0.5);
+  --shadow-lg: 0 16px 40px -8px rgba(0, 0, 0, 0.65);
+  --shadow-card: 0 10px 30px -5px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.07);
+  --shadow-card-hover: 0 20px 40px -10px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(253, 212, 42, 0.3);
+  --shadow-glowGold: 0 0 30px rgba(253, 212, 42, 0.28);
+  --shadow-glowCyan: 0 0 30px rgba(2, 197, 251, 0.28);
+
+  /* Radii */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-full: 9999px;
+
+  /* Transitions */
+  --ease-spring: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+  --duration-fast: 180ms;
+  --duration-normal: 280ms;
+  --duration-slow: 450ms;
+}
+
+/* Light Mode Overrides (if toggled) */
+.light {
+  --surface-950: #FFFFFF;
+  --surface-900: #F8FAFC;
+  --surface-850: #F1F5F9;
+  --surface-800: #E2E8F0;
+  --surface-700: #CBD5E1;
+  --line: #E2E8F0;
+  --line-strong: #CBD5E1;
+  --text-primary: #0F172A;
+  --text-secondary: #334155;
+  --text-muted: #64748B;
+  --gold-text: #B45309;
+}
+
+/* ==========================================================================
+   2. Global Resets & Typography Refinement
+   ========================================================================== */
+html {
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+  text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
+body {
+  background-color: var(--surface-950);
+  color: var(--text-primary);
+  font-family: var(--font-body, 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif);
+  line-height: 1.65;
+  letter-spacing: -0.01em;
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+
+/* Subtle background ambient mesh glow */
+body::before {
+  content: '';
+  position: fixed;
+  top: -150px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 900px;
+  height: 450px;
+  background: radial-gradient(ellipse at center, rgba(2, 197, 251, 0.08) 0%, rgba(253, 212, 42, 0.05) 45%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading, 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif);
+  color: var(--text-primary);
+  letter-spacing: -0.025em;
+  font-weight: 700;
+  line-height: 1.22;
+  margin-top: 0;
+  text-wrap: balance;
+}
+
+p {
+  color: var(--text-secondary);
+  line-height: 1.68;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color var(--duration-fast) var(--ease-smooth);
+}
+
+::selection {
+  background: var(--gold-400);
+  color: #08090C;
+}
+
+/* ==========================================================================
+   3. Header, Navigation & Mega Menu Refinements
+   ========================================================================== */
+/* Top Site Navigation Bar only */
+header.sticky,
+body > div > header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: rgba(8, 9, 12, 0.82) !important;
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border-bottom: 1px solid var(--line) !important;
+  transition: background-color var(--duration-normal) var(--ease-smooth), border-color var(--duration-normal) var(--ease-smooth);
+}
+
+header.sticky.scrolled,
+body > div > header.scrolled {
+  background-color: rgba(8, 9, 12, 0.94) !important;
+  border-bottom-color: var(--line-strong) !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+/* Inner page content headers MUST be static */
+main header,
+article header,
+section header,
+div.max-w-7xl header {
+  position: static !important;
+  background: transparent !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* Header link styling */
+header.sticky nav a,
+body > div > header nav a {
+  position: relative;
+  transition: color var(--duration-fast) var(--ease-smooth);
+}
+
+header.sticky nav a:hover,
+body > div > header nav a:hover {
+  color: var(--gold-text) !important;
+}
+
+/* Mega-Menu Styling */
+header.sticky .group > .group-hover\:grid,
+body > div > header .group > .group-hover\:grid {
+  display: none;
+}
+
+header.sticky .group:hover > .group-hover\:grid,
+body > div > header .group:hover > .group-hover\:grid {
+  display: grid !important;
+  animation: megaMenuFadeIn 0.24s var(--ease-spring);
+  transform-origin: top center;
+  background: rgba(15, 17, 23, 0.96) !important;
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid var(--line-strong) !important;
+  box-shadow: 0 24px 60px -12px rgba(0, 0, 0, 0.75), 0 0 0 1px rgba(255, 255, 255, 0.08) !important;
+}
+
+@keyframes megaMenuFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Mega Menu Item Hover */
+header .group-hover\:grid a {
+  transition: all var(--duration-fast) var(--ease-smooth);
+  border: 1px solid transparent;
+}
+
+header .group-hover\:grid a:hover {
+  background: var(--surface-800) !important;
+  border-color: rgba(253, 212, 42, 0.2);
+  transform: translateX(3px);
+}
+
+/* Mobile Menu Drawer */
+#mobile-menu {
+  background: rgba(15, 17, 23, 0.98) !important;
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border-bottom: 1px solid var(--line-strong) !important;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+  animation: slideDown 0.22s var(--ease-spring);
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ==========================================================================
+   4. Buttons & Interactive Controls
+   ========================================================================== */
+.btn,
+button.inline-flex,
+a.inline-flex {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-heading, 'Plus Jakarta Sans', sans-serif);
+  font-weight: 700;
+  border-radius: var(--radius-full);
+  padding: 0.75rem 1.6rem;
+  font-size: 0.9375rem;
+  cursor: pointer;
+  outline: none;
+  border: 1px solid transparent;
+  transition: transform var(--duration-fast) var(--ease-spring),
+              box-shadow var(--duration-fast) var(--ease-smooth),
+              background-color var(--duration-fast) var(--ease-smooth),
+              border-color var(--duration-fast) var(--ease-smooth),
+              color var(--duration-fast) var(--ease-smooth);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.btn:active,
+button.inline-flex:active,
+a.inline-flex:active {
+  transform: scale(0.97) !important;
+}
+
+/* Primary Button (Gold High Impact) */
+.btn-primary,
+button.bg-\[var\(--gold-400\)\],
+a.bg-\[var\(--gold-400\)\] {
+  background: linear-gradient(135deg, var(--gold-400) 0%, var(--gold-500) 100%) !important;
+  color: #07080A !important;
+  font-weight: 700;
+  border: 1px solid rgba(253, 212, 42, 0.6) !important;
+  box-shadow: 0 4px 16px rgba(253, 212, 42, 0.22);
+}
+
+.btn-primary:hover,
+button.bg-\[var\(--gold-400\)\]:hover,
+a.bg-\[var\(--gold-400\)\]:hover {
+  background: linear-gradient(135deg, #FFE566 0%, var(--gold-400) 100%) !important;
+  box-shadow: 0 6px 24px rgba(253, 212, 42, 0.45) !important;
+  transform: translateY(-2px);
+}
+
+/* Secondary Button (Cyan) */
+.btn-cyan,
+button.border-\[var\(--cyan-500\)\],
+a.border-\[var\(--cyan-500\)\] {
+  background: rgba(2, 197, 251, 0.08) !important;
+  color: var(--cyan-400) !important;
+  border: 1.5px solid var(--cyan-500) !important;
+  box-shadow: 0 4px 16px rgba(2, 197, 251, 0.15);
+}
+
+.btn-cyan:hover,
+button.border-\[var\(--cyan-500\)\]:hover,
+a.border-\[var\(--cyan-500\)\]:hover {
+  background: var(--cyan-500) !important;
+  color: #07080A !important;
+  box-shadow: 0 6px 24px rgba(2, 197, 251, 0.4) !important;
+  transform: translateY(-2px);
+}
+
+/* Dark Surface Button / Ghost Button */
+.btn-surface,
+button.bg-\[var\(--surface-800\)\],
+a.bg-\[var\(--surface-800\)\] {
+  background: var(--surface-850) !important;
+  color: var(--text-primary) !important;
+  border: 1px solid var(--line-strong) !important;
+}
+
+.btn-surface:hover,
+button.bg-\[var\(--surface-800\)\]:hover,
+a.bg-\[var\(--surface-800\)\]:hover {
+  background: var(--surface-800) !important;
+  border-color: var(--gold-400) !important;
+  color: var(--gold-text) !important;
+  transform: translateY(-2px);
+}
+
+/* WhatsApp Action Button */
+.btn-whatsapp,
+a[href*="wa.me"] {
+  background: linear-gradient(135deg, var(--whatsapp-dark) 0%, var(--whatsapp-teal) 100%) !important;
+  color: #FFFFFF !important;
+  border: 1px solid rgba(37, 211, 102, 0.4) !important;
+  box-shadow: 0 4px 16px rgba(37, 211, 102, 0.25);
+  font-weight: 700;
+}
+
+a[href*="wa.me"]:hover {
+  background: linear-gradient(135deg, var(--whatsapp-teal) 0%, var(--whatsapp-green) 100%) !important;
+  box-shadow: 0 6px 24px rgba(37, 211, 102, 0.45) !important;
+  transform: translateY(-2px);
+}
+
+/* ==========================================================================
+   5. Cards, Elevation & Glassmorphism
+   ========================================================================== */
+.card,
+.glass-panel,
+.bg-\[var\(--surface-900\)\] {
+  background-color: var(--surface-900) !important;
+  border-color: var(--line) !important;
+  transition: transform var(--duration-normal) var(--ease-spring),
+              box-shadow var(--duration-normal) var(--ease-smooth),
+              border-color var(--duration-normal) var(--ease-smooth);
+}
+
+/* Card hover lift & glow */
+.group:hover .group-hover\:scale-\[1\.02\],
+div.rounded-3xl.bg-\[var\(--surface-900\)\]:hover,
+div.rounded-2xl.bg-\[var\(--surface-900\)\]:hover {
+  border-color: rgba(253, 212, 42, 0.35);
+  box-shadow: var(--shadow-card-hover);
+}
+
+/* Special hover for cyan bordered cards */
+div.border-2.border-\[var\(--cyan-500\)\]\/60:hover {
+  border-color: var(--cyan-400) !important;
+  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.7), 0 0 30px rgba(2, 197, 251, 0.25) !important;
+}
+
+/* Special hover for gold bordered cards */
+div.border-2.border-\[var\(--gold-400\)\]\/60:hover {
+  border-color: var(--gold-400) !important;
+  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.7), 0 0 30px rgba(253, 212, 42, 0.25) !important;
+}
+
+/* ==========================================================================
+   6. Badges & Entity Labels
+   ========================================================================== */
+.badge,
+span.inline-flex.rounded-full,
+div.inline-flex.rounded-full {
+  letter-spacing: 0.04em;
+  font-weight: 700;
+  transition: all var(--duration-fast) var(--ease-smooth);
+}
+
+/* Gold Pill Accent */
+span.text-\[var\(--gold-text\)\],
+div.text-\[var\(--gold-text\)\] {
+  color: var(--gold-text) !important;
+}
+
+/* Cyan Pill Accent */
+span.text-\[var\(--cyan-500\)\],
+div.text-\[var\(--cyan-500\)\] {
+  color: var(--cyan-400) !important;
+}
+
+/* Tech stack small tags */
+span.bg-\[var\(--surface-800\)\] {
+  background-color: var(--surface-850) !important;
+  border-color: var(--line) !important;
+  transition: all var(--duration-fast) var(--ease-smooth);
+}
+
+span.bg-\[var\(--surface-800\)\]:hover {
+  border-color: var(--cyan-500) !important;
+  color: #FFFFFF !important;
+}
+
+/* ==========================================================================
+   7. Form Controls & Inputs
+   ========================================================================== */
+input, select, textarea {
+  background-color: var(--surface-850) !important;
+  border: 1px solid var(--line-strong) !important;
+  color: var(--text-primary) !important;
+  border-radius: var(--radius-md);
+  padding: 0.75rem 1rem;
+  font-size: 0.9375rem;
+  transition: border-color var(--duration-fast) var(--ease-smooth),
+              box-shadow var(--duration-fast) var(--ease-smooth);
+}
+
+input:focus, select:focus, textarea:focus {
+  outline: none !important;
+  border-color: var(--cyan-500) !important;
+  box-shadow: 0 0 0 3px rgba(2, 197, 251, 0.2) !important;
+}
+
+input::placeholder, textarea::placeholder {
+  color: var(--text-dim) !important;
+}
+
+/* ==========================================================================
+   8. Tables & Data Display
+   ========================================================================== */
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--line);
+}
+
+th {
+  background-color: var(--surface-850) !important;
+  color: var(--gold-text) !important;
+  font-family: var(--font-heading, sans-serif);
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid var(--line);
+}
+
+td {
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid var(--line);
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+}
+
+tr:last-child td {
+  border-bottom: none;
+}
+
+tr:hover td {
+  background-color: rgba(255, 255, 255, 0.02);
+}
+
+/* ==========================================================================
+   9. Accordions & Disclosure Elements
+   ========================================================================== */
+details {
+  border: 1px solid var(--line) !important;
+  border-radius: var(--radius-lg);
+  background-color: var(--surface-900) !important;
+  transition: border-color var(--duration-fast) var(--ease-smooth),
+              background-color var(--duration-fast) var(--ease-smooth);
+  margin-bottom: 0.75rem;
+}
+
+details[open] {
+  border-color: rgba(253, 212, 42, 0.4) !important;
+  background-color: var(--surface-850) !important;
+}
+
+summary {
+  cursor: pointer;
+  padding: 1.25rem 1.5rem;
+  font-weight: 600;
+  font-family: var(--font-heading, sans-serif);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  list-style: none;
+  user-select: none;
+}
+
+summary::-webkit-details-marker {
+  display: none;
+}
+
+/* ==========================================================================
+   10. Call to Action Banners & Highlight Sections
+   ========================================================================== */
+section.bg-gradient-to-br,
+.cta-banner {
+  background: radial-gradient(circle at 50% 0%, rgba(253, 212, 42, 0.08) 0%, transparent 60%),
+              linear-gradient(135deg, var(--surface-900) 0%, var(--surface-950) 100%) !important;
+  border: 1px solid var(--line-gold) !important;
+  box-shadow: 0 24px 60px -12px rgba(0, 0, 0, 0.7), var(--shadow-glowGold) !important;
+}
+
+/* ==========================================================================
+   11. Floating WhatsApp & Quick Conversion Widget
+   ========================================================================== */
+.floating-whatsapp-widget {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 99;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 18px;
+  border-radius: var(--radius-full);
+  background: linear-gradient(135deg, #075E54 0%, #128C7E 50%, #25D366 100%);
+  color: #FFFFFF !important;
+  font-family: var(--font-heading, 'Plus Jakarta Sans', sans-serif);
+  font-size: 0.875rem;
+  font-weight: 700;
+  box-shadow: 0 10px 28px rgba(37, 211, 102, 0.35), 0 0 0 1px rgba(255, 255, 255, 0.2);
+  transition: all var(--duration-fast) var(--ease-spring);
+  text-decoration: none;
+}
+
+.floating-whatsapp-widget:hover {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 14px 34px rgba(37, 211, 102, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.3);
+}
+
+.floating-whatsapp-widget svg {
+  width: 22px;
+  height: 22px;
+  fill: currentColor;
+}
+
+/* Floating Back to Top button */
+.back-to-top-btn {
+  position: fixed;
+  bottom: 24px;
+  left: 24px;
+  z-index: 90;
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-full);
+  background: var(--surface-850);
+  border: 1px solid var(--line-strong);
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: all var(--duration-fast) var(--ease-smooth);
+  cursor: pointer;
+}
+
+.back-to-top-btn.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.back-to-top-btn:hover {
+  border-color: var(--gold-400);
+  color: var(--gold-text);
+  transform: translateY(-2px);
+}
+
+/* ==========================================================================
+   12. Mobile & Responsive Refinements
+   ========================================================================== */
+@media (max-width: 640px) {
+  .floating-whatsapp-widget span {
+    display: none;
+  }
+  .floating-whatsapp-widget {
+    padding: 12px;
+    bottom: 20px;
+    right: 20px;
+    border-radius: var(--radius-full);
+  }
+  .back-to-top-btn {
+    bottom: 20px;
+    left: 20px;
+    width: 40px;
+    height: 40px;
+  }
+  h1 {
+    font-size: 2.1rem !important;
+    line-height: 1.2 !important;
+  }
+  h2 {
+    font-size: 1.65rem !important;
+    line-height: 1.25 !important;
+  }
+}
+
+/* ==========================================================================
+   13. Location Map Frame Styling
+   ========================================================================== */
+.map-embed-wrapper {
+  width: 100% !important;
+  height: 480px !important;
+  min-height: 420px !important;
+  border-radius: 1rem !important;
+  overflow: hidden !important;
+  position: relative !important;
+  background-color: var(--surface-950) !important;
+}
+
+.map-embed-frame {
+  width: 100% !important;
+  height: 100% !important;
+  min-height: 420px !important;
+  border: 0 !important;
+  display: block !important;
+}
+
+/* ==========================================================================
+   Navigation Hover Dropdown Mega Menus
+   ========================================================================== */
+.nav-dropdown {
+  position: absolute;
+  top: 90%;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.22s cubic-bezier(0.16, 1, 0.3, 1), transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.22s ease;
+  z-index: 1000;
+  background-color: var(--surface-900) !important;
+  box-shadow: 0 25px 60px -10px rgba(0, 0, 0, 0.9), 0 0 0 1px var(--line) !important;
+}
+
+.courses-nav-dropdown {
+  width: 620px !important;
+  min-width: 620px !important;
+  left: 0 !important;
+  transform: translateY(-6px);
+  border: 1px solid rgba(253, 212, 42, 0.45) !important;
+}
+
+.internships-nav-dropdown {
+  width: 680px !important;
+  min-width: 680px !important;
+  left: 50% !important;
+  transform: translateX(-50%) translateY(-6px) !important;
+  border: 1px solid rgba(2, 197, 251, 0.45) !important;
+}
+
+.group:hover .courses-nav-dropdown,
+.group:focus-within .courses-nav-dropdown {
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: translateY(0) !important;
+  pointer-events: auto !important;
+}
+
+.group:hover .internships-nav-dropdown,
+.group:focus-within .internships-nav-dropdown {
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: translateX(-50%) translateY(0) !important;
+  pointer-events: auto !important;
+}
+
+.nav-dropdown .grid {
+  display: grid !important;
+}
+

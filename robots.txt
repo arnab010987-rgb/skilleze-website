@@ -1,0 +1,57 @@
+# ============================================================
+# robots.txt — Skilleze Technologies
+# https://www.skilleze-digiteease.com/
+# ============================================================
+
+# ---- All crawlers (default) --------------------------------
+User-agent: *
+Allow: /
+
+# Block utility / non-public pages from indexing
+Disallow: /thank-you.html
+Disallow: /design-system.html
+Disallow: /_not-found.html
+
+# Block any assets or internal paths that should not be indexed
+Disallow: /assets/
+Disallow: /css/
+Disallow: /js/
+
+# ---- Google-specific directives ----------------------------
+User-agent: Googlebot
+Allow: /
+Disallow: /thank-you.html
+Disallow: /design-system.html
+Disallow: /_not-found.html
+Disallow: /assets/
+Disallow: /css/
+Disallow: /js/
+
+# ---- Bing-specific directives ------------------------------
+User-agent: Bingbot
+Allow: /
+Disallow: /thank-you.html
+Disallow: /design-system.html
+Disallow: /_not-found.html
+Disallow: /assets/
+Disallow: /css/
+Disallow: /js/
+
+# ---- Block known bad / scrapy bots -------------------------
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: BLEXBot
+Disallow: /
+
+# ---- Sitemap location --------------------------------------
+Sitemap: https://www.skilleze-digiteease.com/sitemap.xml
