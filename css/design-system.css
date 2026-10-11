@@ -1,67 +1,77 @@
 /**
- * Skilleze Technologies — Modern Design System (CSS3)
- * Crafted for high-impact aesthetics, conversion focus, and lightning performance.
- * Preserves brand identity: Gold (#FDD42A), Cyan (#02C5FB), Magenta (#E4007C).
+ * Skilleze Technologies — Ultra-Professional Design System (CSS3)
+ * Executive Light Palette: Deep Navy (#12264F), Royal Blue (#2563EB), Warm Amber-Orange (#F97316).
+ * Tuned for world-class institutional aesthetic, WCAG AAA accessibility, and conversion excellence.
+ * v2.1 — Fixed nav dropdown layout, enhanced colour palette.
  */
 
 /* ==========================================================================
    1. CSS Custom Properties & Design Tokens
    ========================================================================== */
-:root {
-  /* Brand Core Accents */
-  --gold-400: #FDD42A;
-  --gold-500: #F3B700;
-  --gold-300: #FFE566;
-  --gold-900: #7A5200;
-  --gold-text: #FDD42A;
-  --gold-glow: rgba(253, 212, 42, 0.28);
-  --gold-subtle: rgba(253, 212, 42, 0.12);
+:root,
+html,
+html.dark,
+html[data-theme="dark"],
+.light {
+  /* Brand Core — CTA Accent (Warm Amber-Orange) */
+  --gold-400: #F97316;
+  --gold-500: #EA580C;
+  --gold-300: #FBA138;
+  --gold-900: #9A3412;
+  --gold-text: #EA580C;
+  --gold-glow: rgba(249, 115, 22, 0.22);
+  --gold-subtle: rgba(249, 115, 22, 0.10);
 
-  --cyan-500: #02C5FB;
-  --cyan-400: #38D4FC;
-  --cyan-600: #00A3D4;
-  --cyan-glow: rgba(2, 197, 251, 0.28);
-  --cyan-subtle: rgba(2, 197, 251, 0.12);
+  /* Brand Core — Secondary (Royal Blue) */
+  --cyan-500: #2563EB;
+  --cyan-400: #3B82F6;
+  --cyan-600: #1D4ED8;
+  --cyan-glow: rgba(37, 99, 235, 0.22);
+  --cyan-subtle: rgba(37, 99, 235, 0.10);
 
-  --magenta-500: #E4007C;
-  --magenta-400: #F52796;
-  --magenta-glow: rgba(228, 0, 124, 0.28);
-  --magenta-subtle: rgba(228, 0, 124, 0.12);
+  /* Brand Core — Primary (Deep Navy) */
+  --magenta-500: #12264F;
+  --magenta-400: #1E3A6E;
+  --magenta-glow: rgba(18, 38, 79, 0.22);
+  --magenta-subtle: rgba(18, 38, 79, 0.10);
 
-  --emerald-500: #10B981;
-  --emerald-400: #34D399;
+  /* Trust & Verified (Green) */
+  --emerald-500: #15803D;
+  --emerald-400: #16A34A;
+
+  /* WhatsApp */
   --whatsapp-green: #25D366;
   --whatsapp-dark: #075E54;
   --whatsapp-teal: #128C7E;
 
-  /* Sophisticated Dark Mode Surface Hierarchy */
-  --surface-950: #08090C; /* Deepest canvas */
-  --surface-900: #0F1117; /* Card / Panel surface */
-  --surface-850: #151821; /* Elevated card surface */
-  --surface-800: #1B1F2C; /* Input & Hover surface */
-  --surface-700: #262B3D; /* Highlighted container */
+  /* Professional Light Surface Hierarchy */
+  --surface-950: #F8FAFC; /* Page background — soft off-white */
+  --surface-900: #FFFFFF; /* Card / Panel surface — white */
+  --surface-850: #F1F5F9; /* Elevated card surface — light gray tint */
+  --surface-800: #E2E8F0; /* Input & Hover surface — light border gray */
+  --surface-700: #CBD5E1; /* Highlighted container */
 
   /* Lines & Borders */
-  --line: rgba(255, 255, 255, 0.09);
-  --line-strong: rgba(255, 255, 255, 0.16);
-  --line-gold: rgba(253, 212, 42, 0.35);
-  --line-cyan: rgba(2, 197, 251, 0.35);
-  --line-magenta: rgba(228, 0, 124, 0.35);
+  --line: #E2E8F0;
+  --line-strong: #CBD5E1;
+  --line-gold: rgba(249, 115, 22, 0.35);
+  --line-cyan: rgba(37, 99, 235, 0.35);
+  --line-magenta: rgba(18, 38, 79, 0.35);
 
   /* Typography Colors */
-  --text-primary: #F8FAFC;
-  --text-secondary: #CBD5E1;
-  --text-muted: #94A3B8;
+  --text-primary: #0F172A;   /* Slate — body text */
+  --text-secondary: #334155;
+  --text-muted: #475569;     /* Gray-slate — descriptions, captions */
   --text-dim: #64748B;
 
-  /* Shadows & Depth */
-  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.35);
-  --shadow-md: 0 8px 24px -4px rgba(0, 0, 0, 0.5);
-  --shadow-lg: 0 16px 40px -8px rgba(0, 0, 0, 0.65);
-  --shadow-card: 0 10px 30px -5px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.07);
-  --shadow-card-hover: 0 20px 40px -10px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(253, 212, 42, 0.3);
-  --shadow-glowGold: 0 0 30px rgba(253, 212, 42, 0.28);
-  --shadow-glowCyan: 0 0 30px rgba(2, 197, 251, 0.28);
+  /* Shadows & Depth — refined for premium light mode */
+  --shadow-sm: 0 2px 8px rgba(15, 23, 42, 0.05);
+  --shadow-md: 0 8px 24px -4px rgba(15, 23, 42, 0.08);
+  --shadow-lg: 0 16px 40px -8px rgba(15, 23, 42, 0.12);
+  --shadow-card: 0 4px 20px -2px rgba(18, 38, 79, 0.06), 0 0 0 1px rgba(226, 232, 240, 0.85);
+  --shadow-card-hover: 0 20px 40px -12px rgba(18, 38, 79, 0.14), 0 0 0 1px rgba(37, 99, 235, 0.25);
+  --shadow-glowGold: 0 0 25px rgba(249, 115, 22, 0.20);
+  --shadow-glowCyan: 0 0 25px rgba(37, 99, 235, 0.20);
 
   /* Radii */
   --radius-sm: 8px;
@@ -76,21 +86,6 @@
   --duration-fast: 180ms;
   --duration-normal: 280ms;
   --duration-slow: 450ms;
-}
-
-/* Light Mode Overrides (if toggled) */
-.light {
-  --surface-950: #FFFFFF;
-  --surface-900: #F8FAFC;
-  --surface-850: #F1F5F9;
-  --surface-800: #E2E8F0;
-  --surface-700: #CBD5E1;
-  --line: #E2E8F0;
-  --line-strong: #CBD5E1;
-  --text-primary: #0F172A;
-  --text-secondary: #334155;
-  --text-muted: #64748B;
-  --gold-text: #B45309;
 }
 
 /* ==========================================================================
@@ -120,7 +115,7 @@ body {
   position: relative;
 }
 
-/* Subtle background ambient mesh glow */
+/* Subtle background ambient mesh */
 body::before {
   content: '';
   position: fixed;
@@ -129,14 +124,14 @@ body::before {
   transform: translateX(-50%);
   width: 900px;
   height: 450px;
-  background: radial-gradient(ellipse at center, rgba(2, 197, 251, 0.08) 0%, rgba(253, 212, 42, 0.05) 45%, transparent 70%);
+  background: radial-gradient(ellipse at center, rgba(37, 99, 235, 0.04) 0%, rgba(249, 115, 22, 0.02) 45%, transparent 70%);
   pointer-events: none;
   z-index: 0;
 }
 
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-heading, 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif);
-  color: var(--text-primary);
+  color: #12264F; /* Deep navy for headings */
   letter-spacing: -0.025em;
   font-weight: 700;
   line-height: 1.22;
@@ -156,34 +151,46 @@ a {
 }
 
 ::selection {
-  background: var(--gold-400);
-  color: #08090C;
+  background: #2563EB;
+  color: #FFFFFF;
 }
 
 /* ==========================================================================
    3. Header, Navigation & Mega Menu Refinements
    ========================================================================== */
-/* Top Site Navigation Bar only */
+/* Top Site Navigation Bar — Deep Navy (#12264F) with premium gradient */
 header.sticky,
 body > div > header {
   position: sticky;
   top: 0;
   z-index: 100;
-  background-color: rgba(8, 9, 12, 0.82) !important;
-  backdrop-filter: blur(20px) saturate(180%);
-  -webkit-backdrop-filter: blur(20px) saturate(180%);
-  border-bottom: 1px solid var(--line) !important;
+  background: linear-gradient(135deg, rgba(12, 28, 64, 0.99) 0%, rgba(18, 38, 79, 0.99) 100%) !important;
+  backdrop-filter: blur(24px) saturate(200%);
+  -webkit-backdrop-filter: blur(24px) saturate(200%);
+  border-bottom: 1px solid rgba(249, 115, 22, 0.25) !important;
   transition: background-color var(--duration-normal) var(--ease-smooth), border-color var(--duration-normal) var(--ease-smooth);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3), 0 1px 0 rgba(249, 115, 22, 0.15);
 }
 
 header.sticky.scrolled,
 body > div > header.scrolled {
-  background-color: rgba(8, 9, 12, 0.94) !important;
-  border-bottom-color: var(--line-strong) !important;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+  background: linear-gradient(135deg, rgba(10, 22, 54, 0.99) 0%, rgba(14, 30, 62, 0.99) 100%) !important;
+  border-bottom-color: rgba(37, 99, 235, 0.4) !important;
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.35), 0 1px 0 rgba(37, 99, 235, 0.3);
 }
 
-/* Inner page content headers MUST be static */
+/* Logo container in Header & Footer — frosted pill for razor-sharp logo visibility */
+header.sticky a img,
+body > div > header a img,
+footer a img {
+  background: rgba(255, 255, 255, 0.97);
+  padding: 5px 12px;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.18), 0 0 0 1px rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(8px);
+}
+
+/* Inner page content headers MUST be static & clean */
 main header,
 article header,
 section header,
@@ -196,19 +203,192 @@ div.max-w-7xl header {
   box-shadow: none !important;
 }
 
-/* Header link styling */
+/* Header link styling — white text on navy header */
 header.sticky nav a,
 body > div > header nav a {
   position: relative;
+  color: rgba(255, 255, 255, 0.92) !important;
+  font-weight: 600;
   transition: color var(--duration-fast) var(--ease-smooth);
+  letter-spacing: 0.01em;
 }
 
 header.sticky nav a:hover,
 body > div > header nav a:hover {
-  color: var(--gold-text) !important;
+  color: #FBA138 !important;
 }
 
-/* Mega-Menu Styling */
+/* Chevron icons in nav */
+header.sticky nav a svg,
+body > div > header nav a svg {
+  color: rgba(255, 255, 255, 0.65) !important;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+header.sticky nav a:hover svg,
+body > div > header nav a:hover svg {
+  color: #FBA138 !important;
+}
+
+/* Mobile menu button on header */
+header.sticky #mobile-menu-btn,
+body > div > header #mobile-menu-btn {
+  color: #FFFFFF !important;
+  border-color: rgba(255, 255, 255, 0.3) !important;
+  background: rgba(255, 255, 255, 0.06) !important;
+}
+
+header.sticky #mobile-menu-btn:hover,
+body > div > header #mobile-menu-btn:hover {
+  border-color: #FBA138 !important;
+  background: rgba(249, 115, 22, 0.12) !important;
+}
+
+/* -----------------------------------------------------------------------
+   NAV DROPDOWN — opacity/visibility approach (matches HTML classes used)
+   The HTML uses: opacity-0 invisible group-hover:opacity-100 group-hover:visible
+   We must NOT override with display:none or interfere with that logic.
+   ----------------------------------------------------------------------- */
+
+/* Ensure the nav-dropdown class is never display:none — it uses opacity/visibility */
+header .nav-dropdown {
+  /* Do NOT set display:none — let the opacity/visibility transition work */
+  background: #FFFFFF !important;
+  border-radius: 20px !important;
+  box-shadow:
+    0 24px 64px -12px rgba(15, 23, 42, 0.28),
+    0 8px 20px -6px rgba(15, 23, 42, 0.12),
+    0 0 0 1px rgba(226, 232, 240, 0.9) !important;
+  border: 1px solid rgba(226, 232, 240, 0.9) !important;
+}
+
+/* Courses dropdown — warm amber accent, enforce 620px width */
+header .courses-nav-dropdown {
+  min-width: 620px !important;
+  width: 620px !important;
+  border-top: 3px solid #F97316 !important;
+  border-left: 1px solid rgba(249, 115, 22, 0.3) !important;
+  border-right: 1px solid rgba(249, 115, 22, 0.3) !important;
+  border-bottom: 1px solid rgba(249, 115, 22, 0.3) !important;
+  box-shadow:
+    0 24px 64px -12px rgba(15, 23, 42, 0.28),
+    0 4px 16px rgba(249, 115, 22, 0.06),
+    0 0 0 1px rgba(249, 115, 22, 0.15) !important;
+}
+
+/* Internships dropdown — royal blue accent, enforce 680px width */
+header .internships-nav-dropdown {
+  min-width: 680px !important;
+  width: 680px !important;
+  border-top: 3px solid #2563EB !important;
+  border-left: 1px solid rgba(37, 99, 235, 0.3) !important;
+  border-right: 1px solid rgba(37, 99, 235, 0.3) !important;
+  border-bottom: 1px solid rgba(37, 99, 235, 0.3) !important;
+  box-shadow:
+    0 24px 64px -12px rgba(15, 23, 42, 0.28),
+    0 4px 16px rgba(37, 99, 235, 0.06),
+    0 0 0 1px rgba(37, 99, 235, 0.15) !important;
+}
+
+/* Dropdown header area */
+header .nav-dropdown > div:first-child {
+  padding-bottom: 0.75rem !important;
+  margin-bottom: 1rem !important;
+  border-bottom: 1px solid #E2E8F0 !important;
+}
+
+/* Dropdown item links — courses */
+header .courses-nav-dropdown a.group\/item {
+  border-radius: 12px !important;
+  padding: 0.5rem 0.75rem !important;
+  transition: all 0.15s ease !important;
+  color: #0F172A !important;
+  border: 1px solid transparent !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 0.625rem !important;
+}
+
+header .courses-nav-dropdown a.group\/item:hover {
+  background: rgba(249, 115, 22, 0.06) !important;
+  border-color: rgba(249, 115, 22, 0.2) !important;
+  color: #EA580C !important;
+  transform: translateX(3px);
+}
+
+header .courses-nav-dropdown a.group\/item span.text-\[13px\] {
+  color: #1E293B !important;
+  white-space: nowrap !important;
+  overflow: visible !important;
+  text-overflow: unset !important;
+}
+
+header .courses-nav-dropdown a.group\/item:hover span.text-\[13px\] {
+  color: #EA580C !important;
+}
+
+/* Dropdown item links — internships */
+header .internships-nav-dropdown a {
+  color: #0F172A !important;
+  border-radius: 10px !important;
+  transition: all 0.15s ease !important;
+  /* NO white-space: nowrap here — let content flow in grid columns */
+}
+
+header .internships-nav-dropdown a:hover {
+  background: rgba(37, 99, 235, 0.06) !important;
+  color: #2563EB !important;
+  transform: translateX(3px);
+}
+
+/* Tech domain links in right column */
+header .internships-nav-dropdown .grid-cols-1 a {
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+}
+
+header .internships-nav-dropdown .grid-cols-1 a span:last-child {
+  white-space: nowrap !important;
+  display: block !important;
+  color: #1E293B !important;
+}
+
+header .internships-nav-dropdown .grid-cols-1 a:hover span:last-child {
+  color: #2563EB !important;
+}
+
+/* Duration track cards in internship dropdown */
+header .internships-nav-dropdown a.group\/track {
+  border: 1px solid transparent !important;
+  border-radius: 12px !important;
+  padding: 0.625rem !important;
+  white-space: normal !important; /* Allow track description to wrap */
+}
+
+header .internships-nav-dropdown a.group\/track div.text-xs {
+  white-space: nowrap !important; /* But keep the title nowrap */
+}
+
+header .internships-nav-dropdown a.group\/track:hover {
+  background: rgba(37, 99, 235, 0.07) !important;
+  border-color: rgba(37, 99, 235, 0.25) !important;
+}
+
+/* Column header labels in dropdowns */
+header .nav-dropdown .text-xs.font-bold.uppercase.tracking-wider {
+  font-size: 0.65rem !important;
+  letter-spacing: 0.1em !important;
+}
+
+/* Footer links inside dropdowns */
+header .nav-dropdown > div:last-child.border-t {
+  border-color: #E2E8F0 !important;
+  margin-top: 1rem !important;
+  padding-top: 0.875rem !important;
+}
+
+/* Mega-Menu Styling — only for .group-hover:grid approach (legacy, kept for safety) */
 header.sticky .group > .group-hover\:grid,
 body > div > header .group > .group-hover\:grid {
   display: none;
@@ -219,11 +399,11 @@ body > div > header .group:hover > .group-hover\:grid {
   display: grid !important;
   animation: megaMenuFadeIn 0.24s var(--ease-spring);
   transform-origin: top center;
-  background: rgba(15, 17, 23, 0.96) !important;
+  background: #FFFFFF !important;
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
   border: 1px solid var(--line-strong) !important;
-  box-shadow: 0 24px 60px -12px rgba(0, 0, 0, 0.75), 0 0 0 1px rgba(255, 255, 255, 0.08) !important;
+  box-shadow: 0 24px 60px -12px rgba(15, 23, 42, 0.22), 0 0 0 1px rgba(226, 232, 240, 0.8) !important;
 }
 
 @keyframes megaMenuFadeIn {
@@ -237,26 +417,22 @@ body > div > header .group:hover > .group-hover\:grid {
   }
 }
 
-/* Mega Menu Item Hover */
-header .group-hover\:grid a {
-  transition: all var(--duration-fast) var(--ease-smooth);
-  border: 1px solid transparent;
-}
-
-header .group-hover\:grid a:hover {
-  background: var(--surface-800) !important;
-  border-color: rgba(253, 212, 42, 0.2);
-  transform: translateX(3px);
-}
-
 /* Mobile Menu Drawer */
 #mobile-menu {
-  background: rgba(15, 17, 23, 0.98) !important;
+  background: #FFFFFF !important;
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
-  border-bottom: 1px solid var(--line-strong) !important;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+  border-bottom: 1px solid #E2E8F0 !important;
+  box-shadow: 0 20px 40px rgba(15, 23, 42, 0.14);
   animation: slideDown 0.22s var(--ease-spring);
+}
+
+#mobile-menu a {
+  color: #0F172A !important;
+}
+
+#mobile-menu a:hover {
+  color: #2563EB !important;
 }
 
 @keyframes slideDown {
@@ -271,7 +447,52 @@ header .group-hover\:grid a:hover {
 }
 
 /* ==========================================================================
-   4. Buttons & Interactive Controls
+   4. Hero Section — Deep Navy Background per User Specification
+   ========================================================================== */
+body > div > main > section.relative.py-20.max-w-7xl:first-child,
+main > section.relative.py-20:first-of-type {
+  position: relative;
+  background: radial-gradient(circle at 50% 10%, rgba(37, 99, 235, 0.25) 0%, transparent 60%),
+              linear-gradient(180deg, #12264F 0%, #0E1E3E 100%) !important;
+  max-width: 100% !important;
+  width: 100% !important;
+  padding-left: max(1.5rem, calc((100% - 80rem) / 2)) !important;
+  padding-right: max(1.5rem, calc((100% - 80rem) / 2)) !important;
+  border-bottom: 1px solid rgba(37, 99, 235, 0.25) !important;
+  box-shadow: 0 20px 40px -15px rgba(15, 23, 42, 0.2);
+  margin-top: 0 !important;
+}
+
+/* Hero Heading — Pure White on Navy Background */
+body > div > main > section.relative.py-20:first-child h1,
+main > section.relative.py-20:first-of-type h1 {
+  color: #FFFFFF !important;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Hero Subtitle — Light Silver Slate */
+body > div > main > section.relative.py-20:first-child p.text-lg,
+main > section.relative.py-20:first-of-type p.text-lg {
+  color: #CBD5E1 !important;
+}
+
+/* Hero Pill Badge ONLY (direct child div) */
+body > div > main > section.relative.py-20:first-child > div.inline-flex.rounded-full,
+main > section.relative.py-20:first-of-type > div.inline-flex.rounded-full {
+  background: rgba(249, 115, 22, 0.18) !important;
+  border-color: rgba(249, 115, 22, 0.5) !important;
+  color: #FDBA74 !important;
+}
+
+/* Hero Cards — Floating White Cards on Navy */
+body > div > main > section.relative.py-20:first-child div.bg-\[var\(--surface-900\)\],
+main > section.relative.py-20:first-of-type div.bg-\[var\(--surface-900\)\] {
+  background-color: #FFFFFF !important;
+  box-shadow: 0 24px 50px -12px rgba(0, 0, 0, 0.35), 0 0 0 1px rgba(255, 255, 255, 0.1) !important;
+}
+
+/* ==========================================================================
+   5. Buttons & Interactive Controls
    ========================================================================== */
 .btn,
 button.inline-flex,
@@ -303,49 +524,81 @@ a.inline-flex:active {
   transform: scale(0.97) !important;
 }
 
-/* Primary Button (Gold High Impact) */
+/* Primary Button (Warm Amber-Orange CTA — Navy text per user specification) */
 .btn-primary,
 button.bg-\[var\(--gold-400\)\],
-a.bg-\[var\(--gold-400\)\] {
-  background: linear-gradient(135deg, var(--gold-400) 0%, var(--gold-500) 100%) !important;
-  color: #07080A !important;
-  font-weight: 700;
-  border: 1px solid rgba(253, 212, 42, 0.6) !important;
-  box-shadow: 0 4px 16px rgba(253, 212, 42, 0.22);
+a.bg-\[var\(--gold-400\)\],
+button.bg-\[var\(--gold-500\)\],
+a.bg-\[var\(--gold-500\)\] {
+  background: linear-gradient(135deg, #FBA138 0%, #F97316 50%, #EA580C 100%) !important;
+  color: #12264F !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.01em;
+  border: 1px solid rgba(249, 115, 22, 0.7) !important;
+  box-shadow: 0 4px 16px rgba(249, 115, 22, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.35) !important;
 }
 
 .btn-primary:hover,
 button.bg-\[var\(--gold-400\)\]:hover,
-a.bg-\[var\(--gold-400\)\]:hover {
-  background: linear-gradient(135deg, #FFE566 0%, var(--gold-400) 100%) !important;
-  box-shadow: 0 6px 24px rgba(253, 212, 42, 0.45) !important;
+a.bg-\[var\(--gold-400\)\]:hover,
+button.bg-\[var\(--gold-500\)\]:hover,
+a.bg-\[var\(--gold-500\)\]:hover {
+  background: linear-gradient(135deg, #FDBA74 0%, #FBA138 60%, #F97316 100%) !important;
+  color: #0B1938 !important;
+  box-shadow: 0 8px 26px rgba(249, 115, 22, 0.42) !important;
   transform: translateY(-2px);
 }
 
-/* Secondary Button (Cyan) */
+/* Ensure text-[#0A0A0C] on primary buttons uses Deep Navy */
+button.text-\[\#0A0A0C\],
+.btn-primary.text-\[\#0A0A0C\],
+a.bg-\[var\(--gold-400\)\].text-\[\#0A0A0C\],
+button.bg-\[var\(--gold-400\)\],
+button.bg-\[var\(--gold-400\)\] span,
+button.bg-\[var\(--gold-400\)\] svg {
+  color: #12264F !important;
+}
+
+button.bg-\[var\(--gold-400\)\]:hover span,
+button.bg-\[var\(--gold-400\)\]:hover svg {
+  color: #0B1938 !important;
+}
+
+/* Secondary Button (Royal Blue) */
 .btn-cyan,
 button.border-\[var\(--cyan-500\)\],
 a.border-\[var\(--cyan-500\)\] {
-  background: rgba(2, 197, 251, 0.08) !important;
-  color: var(--cyan-400) !important;
-  border: 1.5px solid var(--cyan-500) !important;
-  box-shadow: 0 4px 16px rgba(2, 197, 251, 0.15);
+  background: rgba(37, 99, 235, 0.06) !important;
+  color: #2563EB !important;
+  border: 2px solid #2563EB !important;
+  box-shadow: 0 4px 16px rgba(37, 99, 235, 0.12) !important;
+}
+
+button.border-\[var\(--cyan-500\)\] span,
+button.border-\[var\(--cyan-500\)\] svg {
+  color: #2563EB !important;
 }
 
 .btn-cyan:hover,
 button.border-\[var\(--cyan-500\)\]:hover,
 a.border-\[var\(--cyan-500\)\]:hover {
-  background: var(--cyan-500) !important;
-  color: #07080A !important;
-  box-shadow: 0 6px 24px rgba(2, 197, 251, 0.4) !important;
+  background: #2563EB !important;
+  color: #FFFFFF !important;
+  border-color: #2563EB !important;
+  box-shadow: 0 6px 22px rgba(37, 99, 235, 0.35) !important;
   transform: translateY(-2px);
 }
 
-/* Dark Surface Button / Ghost Button */
+button.border-\[var\(--cyan-500\)\]:hover span,
+button.border-\[var\(--cyan-500\)\]:hover svg {
+  color: #FFFFFF !important;
+}
+
+/* Light Surface Button / Ghost Button */
 .btn-surface,
 button.bg-\[var\(--surface-800\)\],
 a.bg-\[var\(--surface-800\)\] {
-  background: var(--surface-850) !important;
+  background: #F1F5F9 !important;
   color: var(--text-primary) !important;
   border: 1px solid var(--line-strong) !important;
 }
@@ -353,9 +606,9 @@ a.bg-\[var\(--surface-800\)\] {
 .btn-surface:hover,
 button.bg-\[var\(--surface-800\)\]:hover,
 a.bg-\[var\(--surface-800\)\]:hover {
-  background: var(--surface-800) !important;
-  border-color: var(--gold-400) !important;
-  color: var(--gold-text) !important;
+  background: #E2E8F0 !important;
+  border-color: #2563EB !important;
+  color: #2563EB !important;
   transform: translateY(-2px);
 }
 
@@ -376,40 +629,48 @@ a[href*="wa.me"]:hover {
 }
 
 /* ==========================================================================
-   5. Cards, Elevation & Glassmorphism
+   6. Cards, Elevation & Light Surfaces
    ========================================================================== */
 .card,
 .glass-panel,
 .bg-\[var\(--surface-900\)\] {
-  background-color: var(--surface-900) !important;
+  background-color: #FFFFFF !important;
   border-color: var(--line) !important;
   transition: transform var(--duration-normal) var(--ease-spring),
               box-shadow var(--duration-normal) var(--ease-smooth),
               border-color var(--duration-normal) var(--ease-smooth);
 }
 
-/* Card hover lift & glow */
+/* Card hover lift & soft depth */
 .group:hover .group-hover\:scale-\[1\.02\],
 div.rounded-3xl.bg-\[var\(--surface-900\)\]:hover,
 div.rounded-2xl.bg-\[var\(--surface-900\)\]:hover {
-  border-color: rgba(253, 212, 42, 0.35);
+  border-color: rgba(37, 99, 235, 0.35);
   box-shadow: var(--shadow-card-hover);
 }
 
-/* Special hover for cyan bordered cards */
-div.border-2.border-\[var\(--cyan-500\)\]\/60:hover {
-  border-color: var(--cyan-400) !important;
-  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.7), 0 0 30px rgba(2, 197, 251, 0.25) !important;
+/* Course Card (Warm Orange Accent Border) */
+div.border-2.border-\[var\(--gold-400\)\]\/60 {
+  border-color: rgba(249, 115, 22, 0.45) !important;
 }
 
-/* Special hover for gold bordered cards */
 div.border-2.border-\[var\(--gold-400\)\]\/60:hover {
-  border-color: var(--gold-400) !important;
-  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.7), 0 0 30px rgba(253, 212, 42, 0.25) !important;
+  border-color: #F97316 !important;
+  box-shadow: 0 20px 40px -10px rgba(15, 23, 42, 0.12), 0 0 25px rgba(249, 115, 22, 0.18) !important;
+}
+
+/* Internship Card (Royal Blue Accent Border) */
+div.border-2.border-\[var\(--cyan-500\)\]\/60 {
+  border-color: rgba(37, 99, 235, 0.45) !important;
+}
+
+div.border-2.border-\[var\(--cyan-500\)\]\/60:hover {
+  border-color: #2563EB !important;
+  box-shadow: 0 20px 40px -10px rgba(15, 23, 42, 0.12), 0 0 25px rgba(37, 99, 235, 0.18) !important;
 }
 
 /* ==========================================================================
-   6. Badges & Entity Labels
+   7. Badges & Entity Labels
    ========================================================================== */
 .badge,
 span.inline-flex.rounded-full,
@@ -419,35 +680,42 @@ div.inline-flex.rounded-full {
   transition: all var(--duration-fast) var(--ease-smooth);
 }
 
-/* Gold Pill Accent */
+/* Pill Accent — Warm Orange */
 span.text-\[var\(--gold-text\)\],
 div.text-\[var\(--gold-text\)\] {
-  color: var(--gold-text) !important;
+  color: #EA580C !important;
 }
 
-/* Cyan Pill Accent */
+/* Pill Accent — Royal Blue */
 span.text-\[var\(--cyan-500\)\],
 div.text-\[var\(--cyan-500\)\] {
-  color: var(--cyan-400) !important;
+  color: #2563EB !important;
 }
 
 /* Tech stack small tags */
 span.bg-\[var\(--surface-800\)\] {
-  background-color: var(--surface-850) !important;
+  background-color: #F1F5F9 !important;
   border-color: var(--line) !important;
+  color: #334155 !important;
   transition: all var(--duration-fast) var(--ease-smooth);
 }
 
 span.bg-\[var\(--surface-800\)\]:hover {
-  border-color: var(--cyan-500) !important;
-  color: #FFFFFF !important;
+  border-color: #2563EB !important;
+  color: #2563EB !important;
+}
+
+/* Trust / Verified Checkmarks & Badges — Deep Green (#15803D) */
+.text-\[var\(--emerald-500\)\],
+svg.text-\[var\(--emerald-500\)\] {
+  color: #15803D !important;
 }
 
 /* ==========================================================================
-   7. Form Controls & Inputs
+   8. Form Controls & Inputs
    ========================================================================== */
 input, select, textarea {
-  background-color: var(--surface-850) !important;
+  background-color: #FFFFFF !important;
   border: 1px solid var(--line-strong) !important;
   color: var(--text-primary) !important;
   border-radius: var(--radius-md);
@@ -459,8 +727,8 @@ input, select, textarea {
 
 input:focus, select:focus, textarea:focus {
   outline: none !important;
-  border-color: var(--cyan-500) !important;
-  box-shadow: 0 0 0 3px rgba(2, 197, 251, 0.2) !important;
+  border-color: #2563EB !important;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15) !important;
 }
 
 input::placeholder, textarea::placeholder {
@@ -468,7 +736,7 @@ input::placeholder, textarea::placeholder {
 }
 
 /* ==========================================================================
-   8. Tables & Data Display
+   9. Tables & Data Display
    ========================================================================== */
 table {
   width: 100%;
@@ -480,8 +748,8 @@ table {
 }
 
 th {
-  background-color: var(--surface-850) !important;
-  color: var(--gold-text) !important;
+  background-color: #12264F !important;
+  color: #FFFFFF !important;
   font-family: var(--font-heading, sans-serif);
   font-weight: 700;
   text-transform: uppercase;
@@ -503,24 +771,24 @@ tr:last-child td {
 }
 
 tr:hover td {
-  background-color: rgba(255, 255, 255, 0.02);
+  background-color: rgba(37, 99, 235, 0.03);
 }
 
 /* ==========================================================================
-   9. Accordions & Disclosure Elements
+   10. Accordions & Disclosure Elements
    ========================================================================== */
 details {
   border: 1px solid var(--line) !important;
   border-radius: var(--radius-lg);
-  background-color: var(--surface-900) !important;
+  background-color: #FFFFFF !important;
   transition: border-color var(--duration-fast) var(--ease-smooth),
               background-color var(--duration-fast) var(--ease-smooth);
   margin-bottom: 0.75rem;
 }
 
 details[open] {
-  border-color: rgba(253, 212, 42, 0.4) !important;
-  background-color: var(--surface-850) !important;
+  border-color: rgba(37, 99, 235, 0.4) !important;
+  background-color: #F8FAFC !important;
 }
 
 summary {
@@ -540,18 +808,37 @@ summary::-webkit-details-marker {
 }
 
 /* ==========================================================================
-   10. Call to Action Banners & Highlight Sections
+   11. Call to Action Banners & Highlight Sections
    ========================================================================== */
 section.bg-gradient-to-br,
 .cta-banner {
-  background: radial-gradient(circle at 50% 0%, rgba(253, 212, 42, 0.08) 0%, transparent 60%),
-              linear-gradient(135deg, var(--surface-900) 0%, var(--surface-950) 100%) !important;
-  border: 1px solid var(--line-gold) !important;
-  box-shadow: 0 24px 60px -12px rgba(0, 0, 0, 0.7), var(--shadow-glowGold) !important;
+  background: radial-gradient(circle at 50% 0%, rgba(37, 99, 235, 0.12) 0%, transparent 60%),
+              linear-gradient(135deg, #12264F 0%, #1A3668 100%) !important;
+  border: 1px solid rgba(37, 99, 235, 0.35) !important;
+  box-shadow: 0 24px 60px -12px rgba(15, 23, 42, 0.18), var(--shadow-glowCyan) !important;
+  color: #FFFFFF !important;
+}
+
+section.bg-gradient-to-br h1,
+section.bg-gradient-to-br h2,
+section.bg-gradient-to-br h3,
+section.bg-gradient-to-br p,
+section.bg-gradient-to-br span,
+.cta-banner h1,
+.cta-banner h2,
+.cta-banner h3,
+.cta-banner p,
+.cta-banner span {
+  color: #FFFFFF !important;
+}
+
+section.bg-gradient-to-br .text-\[var\(--text-muted\)\],
+.cta-banner .text-\[var\(--text-muted\)\] {
+  color: rgba(255, 255, 255, 0.8) !important;
 }
 
 /* ==========================================================================
-   11. Floating WhatsApp & Quick Conversion Widget
+   12. Floating WhatsApp & Navigation Quick Access
    ========================================================================== */
 .floating-whatsapp-widget {
   position: fixed;
@@ -584,7 +871,6 @@ section.bg-gradient-to-br,
   fill: currentColor;
 }
 
-/* Floating Back to Top button */
 .back-to-top-btn {
   position: fixed;
   bottom: 24px;
@@ -593,9 +879,9 @@ section.bg-gradient-to-br,
   width: 44px;
   height: 44px;
   border-radius: var(--radius-full);
-  background: var(--surface-850);
+  background: #FFFFFF;
   border: 1px solid var(--line-strong);
-  color: var(--text-primary);
+  color: #12264F;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -603,6 +889,7 @@ section.bg-gradient-to-br,
   visibility: hidden;
   transition: all var(--duration-fast) var(--ease-smooth);
   cursor: pointer;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.08);
 }
 
 .back-to-top-btn.visible {
@@ -611,109 +898,70 @@ section.bg-gradient-to-br,
 }
 
 .back-to-top-btn:hover {
-  border-color: var(--gold-400);
-  color: var(--gold-text);
+  border-color: #2563EB;
+  color: #2563EB;
   transform: translateY(-2px);
 }
 
 /* ==========================================================================
-   12. Mobile & Responsive Refinements
+   13. Footer Styling — Deep Navy (#12264F)
    ========================================================================== */
-@media (max-width: 640px) {
-  .floating-whatsapp-widget span {
-    display: none;
-  }
-  .floating-whatsapp-widget {
-    padding: 12px;
-    bottom: 20px;
-    right: 20px;
-    border-radius: var(--radius-full);
-  }
-  .back-to-top-btn {
-    bottom: 20px;
-    left: 20px;
-    width: 40px;
-    height: 40px;
-  }
-  h1 {
-    font-size: 2.1rem !important;
-    line-height: 1.2 !important;
-  }
-  h2 {
-    font-size: 1.65rem !important;
-    line-height: 1.25 !important;
-  }
+footer,
+body > div > footer,
+footer.bg-\[var\(--surface-950\)\] {
+  background-color: #12264F !important;
+  color: #FFFFFF !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.12) !important;
+}
+
+footer a {
+  color: rgba(255, 255, 255, 0.75) !important;
+  transition: color var(--duration-fast) var(--ease-smooth);
+}
+
+footer a:hover {
+  color: #FBA138 !important;
+}
+
+footer h3,
+footer h4,
+footer h5,
+footer .font-heading {
+  color: #FFFFFF !important;
+}
+
+footer .text-\[var\(--text-muted\)\],
+footer .text-\[var\(--text-primary\)\] {
+  color: rgba(255, 255, 255, 0.72) !important;
+}
+
+footer .border-\[var\(--line\)\] {
+  border-color: rgba(255, 255, 255, 0.14) !important;
 }
 
 /* ==========================================================================
-   13. Location Map Frame Styling
+   14. Mobile Bottom Quick Bar
    ========================================================================== */
-.map-embed-wrapper {
-  width: 100% !important;
-  height: 480px !important;
-  min-height: 420px !important;
-  border-radius: 1rem !important;
-  overflow: hidden !important;
-  position: relative !important;
-  background-color: var(--surface-950) !important;
-}
-
-.map-embed-frame {
-  width: 100% !important;
-  height: 100% !important;
-  min-height: 420px !important;
-  border: 0 !important;
-  display: block !important;
+.md\:hidden.fixed.bottom-0 {
+  background-color: rgba(255, 255, 255, 0.96) !important;
+  backdrop-filter: blur(16px);
+  border-top: 1px solid var(--line-strong) !important;
+  box-shadow: 0 -4px 20px rgba(15, 23, 42, 0.08) !important;
 }
 
 /* ==========================================================================
-   Navigation Hover Dropdown Mega Menus
+   15. Scrollbar & Polish
    ========================================================================== */
-.nav-dropdown {
-  position: absolute;
-  top: 90%;
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
-  transition: opacity 0.22s cubic-bezier(0.16, 1, 0.3, 1), transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.22s ease;
-  z-index: 1000;
-  background-color: var(--surface-900) !important;
-  box-shadow: 0 25px 60px -10px rgba(0, 0, 0, 0.9), 0 0 0 1px var(--line) !important;
+::-webkit-scrollbar {
+  width: 8px;
 }
-
-.courses-nav-dropdown {
-  width: 620px !important;
-  min-width: 620px !important;
-  left: 0 !important;
-  transform: translateY(-6px);
-  border: 1px solid rgba(253, 212, 42, 0.45) !important;
+::-webkit-scrollbar-track {
+  background: #F8FAFC;
 }
-
-.internships-nav-dropdown {
-  width: 680px !important;
-  min-width: 680px !important;
-  left: 50% !important;
-  transform: translateX(-50%) translateY(-6px) !important;
-  border: 1px solid rgba(2, 197, 251, 0.45) !important;
+::-webkit-scrollbar-thumb {
+  background: #CBD5E1;
+  border-radius: 4px;
 }
-
-.group:hover .courses-nav-dropdown,
-.group:focus-within .courses-nav-dropdown {
-  opacity: 1 !important;
-  visibility: visible !important;
-  transform: translateY(0) !important;
-  pointer-events: auto !important;
+::-webkit-scrollbar-thumb:hover {
+  background: #94A3B8;
 }
-
-.group:hover .internships-nav-dropdown,
-.group:focus-within .internships-nav-dropdown {
-  opacity: 1 !important;
-  visibility: visible !important;
-  transform: translateX(-50%) translateY(0) !important;
-  pointer-events: auto !important;
-}
-
-.nav-dropdown .grid {
-  display: grid !important;
-}
-
