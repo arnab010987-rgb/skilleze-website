@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }, { passive: true });
     }
 
-    // 2. Mobile Menu Toggle
+    // 2. Mobile Menu Toggle & Interactive Dropdown Accordions
     const mobileMenuBtn = document.getElementById('mobile-menu-btn');
     const mobileMenu = document.getElementById('mobile-menu');
     const iconOpen = document.querySelector('.mobile-menu-icon-open');
@@ -32,6 +32,82 @@ document.addEventListener('DOMContentLoaded', () => {
                 iconClose.classList.toggle('hidden');
             }
         });
+
+        // Initialize mobile dropdown items (supports hover + click/tap)
+        function setupMobileDropdowns() {
+            // Dynamic upgrade for any legacy flat structures in #mobile-menu
+            if (!mobileMenu.querySelector('.mobile-dropdown-item')) {
+                const sections = Array.from(mobileMenu.querySelectorAll('.space-y-3'));
+                sections.forEach(sec => {
+                    const titleEl = sec.querySelector('.uppercase');
+                    if (!titleEl) return;
+                    const text = titleEl.textContent.trim();
+                    const isCourses = text.includes('Course') || text.includes('Skill');
+                    const isInternships = text.includes('Internship') || text.includes('Track');
+
+                    if (isCourses || isInternships) {
+                        const links = Array.from(sec.querySelectorAll('a'));
+                        const title = isCourses ? 'Courses' : 'Internships';
+                        const badgeText = isCourses ? '9 Tracks' : 'Industrial Tracks';
+                        const accentColor = isCourses ? 'var(--gold-text)' : 'var(--cyan-500)';
+                        const dotColor = isCourses ? 'var(--gold-400)' : 'var(--cyan-500)';
+
+                        const wrapper = document.createElement('div');
+                        wrapper.className = `mobile-dropdown-item ${isCourses ? 'group/mob-courses' : 'group/mob-internships'}`;
+                        wrapper.setAttribute('data-mobile-dropdown', isCourses ? 'courses' : 'internships');
+
+                        wrapper.innerHTML = `
+                            <div class="mobile-dropdown-header flex items-center justify-between py-3 px-3.5 rounded-xl cursor-pointer hover:bg-[var(--surface-800)] transition-colors">
+                                <div class="flex items-center gap-2.5">
+                                    <span class="w-2 h-2 rounded-full shrink-0" style="background:${dotColor}"></span>
+                                    <span class="font-heading font-bold text-sm text-[var(--text-primary)]">${title}</span>
+                                    <span class="text-[11px] font-semibold px-2 py-0.5 rounded-full" style="color:${accentColor}; background:${isCourses ? 'rgba(124,58,237,0.12)' : 'rgba(37,99,235,0.12)'}">${badgeText}</span>
+                                </div>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mobile-dropdown-chevron transition-transform duration-200" style="color:${accentColor}">
+                                    <path d="m6 9 6 6 6-6"/>
+                                </svg>
+                            </div>
+                            <div class="mobile-dropdown-list pl-4 pr-2 pt-1 pb-2 space-y-1 ml-4 my-1" style="border-left: 2px solid ${isCourses ? 'rgba(124,58,237,0.3)' : 'rgba(37,99,235,0.3)'}">
+                            </div>
+                        `;
+
+                        const listEl = wrapper.querySelector('.mobile-dropdown-list');
+                        links.forEach(a => {
+                            a.className = "block text-xs text-[var(--text-primary)] hover:text-[var(--gold-text)] py-1.5 px-2 rounded-lg hover:bg-[var(--surface-800)] transition-all";
+                            listEl.appendChild(a);
+                        });
+
+                        sec.replaceWith(wrapper);
+                    }
+                });
+            }
+
+            const dropdownItems = mobileMenu.querySelectorAll('.mobile-dropdown-item');
+            dropdownItems.forEach(item => {
+                const header = item.querySelector('.mobile-dropdown-header');
+                if (!header) return;
+
+                // Mouse hover events (for responsive viewport resize & mouse devices)
+                item.addEventListener('mouseenter', () => {
+                    item.classList.add('is-open');
+                });
+                item.addEventListener('mouseleave', () => {
+                    item.classList.remove('is-open');
+                });
+
+                // Click / Touch tap toggle
+                header.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    const wasOpen = item.classList.contains('is-open');
+                    dropdownItems.forEach(other => {
+                        if (other !== item) other.classList.remove('is-open');
+                    });
+                    item.classList.toggle('is-open', !wasOpen);
+                });
+            });
+        }
+
+        setupMobileDropdowns();
     }
 
     // 3. Smooth Scrolling for Internal Anchor Links

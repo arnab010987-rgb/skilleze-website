@@ -1,8 +1,8 @@
 /**
  * Skilleze Technologies — Ultra-Professional Design System (CSS3)
- * Executive Light Palette: Deep Navy (#12264F), Royal Blue (#2563EB), Warm Amber-Orange (#F97316).
+ * Executive Light Palette: Deep Navy (#12264F), Royal Blue (#2563EB), Vibrant Violet (#7C3AED).
  * Tuned for world-class institutional aesthetic, WCAG AAA accessibility, and conversion excellence.
- * v2.1 — Fixed nav dropdown layout, enhanced colour palette.
+ * v2.2 — Violet accent theme, full light-background mode.
  */
 
 /* ==========================================================================
@@ -13,14 +13,14 @@ html,
 html.dark,
 html[data-theme="dark"],
 .light {
-  /* Brand Core — CTA Accent (Warm Amber-Orange) */
-  --gold-400: #F97316;
-  --gold-500: #EA580C;
-  --gold-300: #FBA138;
-  --gold-900: #9A3412;
-  --gold-text: #EA580C;
-  --gold-glow: rgba(249, 115, 22, 0.22);
-  --gold-subtle: rgba(249, 115, 22, 0.10);
+  /* Brand Core — CTA Accent (Vibrant Violet/Purple) */
+  --gold-400: #7C3AED;
+  --gold-500: #6D28D9;
+  --gold-300: #8B5CF6;
+  --gold-900: #4C1D95;
+  --gold-text: #6D28D9;
+  --gold-glow: rgba(124, 58, 237, 0.22);
+  --gold-subtle: rgba(124, 58, 237, 0.10);
 
   /* Brand Core — Secondary (Royal Blue) */
   --cyan-500: #2563EB;
@@ -44,17 +44,17 @@ html[data-theme="dark"],
   --whatsapp-dark: #075E54;
   --whatsapp-teal: #128C7E;
 
-  /* Professional Light Surface Hierarchy */
-  --surface-950: #F8FAFC; /* Page background — soft off-white */
+  /* Professional Cool & Crisp Surface Hierarchy */
+  --surface-950: #F0F4F8; /* Page background — cool tech slate */
   --surface-900: #FFFFFF; /* Card / Panel surface — white */
-  --surface-850: #F1F5F9; /* Elevated card surface — light gray tint */
-  --surface-800: #E2E8F0; /* Input & Hover surface — light border gray */
+  --surface-850: #E6EDF5; /* Elevated card surface — light cool slate */
+  --surface-800: #DCE5F0; /* Input & Hover surface */
   --surface-700: #CBD5E1; /* Highlighted container */
 
   /* Lines & Borders */
   --line: #E2E8F0;
   --line-strong: #CBD5E1;
-  --line-gold: rgba(249, 115, 22, 0.35);
+  --line-gold: rgba(124, 58, 237, 0.35);
   --line-cyan: rgba(37, 99, 235, 0.35);
   --line-magenta: rgba(18, 38, 79, 0.35);
 
@@ -70,7 +70,7 @@ html[data-theme="dark"],
   --shadow-lg: 0 16px 40px -8px rgba(15, 23, 42, 0.12);
   --shadow-card: 0 4px 20px -2px rgba(18, 38, 79, 0.06), 0 0 0 1px rgba(226, 232, 240, 0.85);
   --shadow-card-hover: 0 20px 40px -12px rgba(18, 38, 79, 0.14), 0 0 0 1px rgba(37, 99, 235, 0.25);
-  --shadow-glowGold: 0 0 25px rgba(249, 115, 22, 0.20);
+  --shadow-glowGold: 0 0 25px rgba(124, 58, 237, 0.20);
   --shadow-glowCyan: 0 0 25px rgba(37, 99, 235, 0.20);
 
   /* Radii */
@@ -104,7 +104,15 @@ html {
 }
 
 body {
-  background-color: var(--surface-950);
+  background-color: #F0F4F8;
+  background-image: 
+    radial-gradient(at 0% 0%, rgba(37, 99, 235, 0.08) 0px, transparent 45%),
+    radial-gradient(at 100% 0%, rgba(124, 58, 237, 0.08) 0px, transparent 45%),
+    radial-gradient(at 50% 50%, rgba(240, 244, 248, 0.6) 0px, transparent 80%),
+    radial-gradient(circle at 50% 100%, rgba(37, 99, 235, 0.05) 0px, transparent 50%),
+    radial-gradient(rgba(148, 163, 184, 0.18) 1px, transparent 1px);
+  background-size: 100% 100%, 100% 100%, 100% 100%, 100% 100%, 28px 28px;
+  background-attachment: fixed;
   color: var(--text-primary);
   font-family: var(--font-body, 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif);
   line-height: 1.65;
@@ -113,6 +121,12 @@ body {
   margin: 0;
   padding: 0;
   position: relative;
+}
+
+/* Ensure outer page wrappers let the cool ambient background shine through */
+div.min-h-screen.flex.flex-col.bg-\[var\(--surface-950\)\],
+body > div.min-h-screen {
+  background-color: transparent !important;
 }
 
 /* Subtle background ambient mesh */
@@ -124,7 +138,7 @@ body::before {
   transform: translateX(-50%);
   width: 900px;
   height: 450px;
-  background: radial-gradient(ellipse at center, rgba(37, 99, 235, 0.04) 0%, rgba(249, 115, 22, 0.02) 45%, transparent 70%);
+  background: radial-gradient(ellipse at center, rgba(37, 99, 235, 0.06) 0%, rgba(124, 58, 237, 0.04) 45%, transparent 70%);
   pointer-events: none;
   z-index: 0;
 }
@@ -158,36 +172,37 @@ a {
 /* ==========================================================================
    3. Header, Navigation & Mega Menu Refinements
    ========================================================================== */
-/* Top Site Navigation Bar — Deep Navy (#12264F) with premium gradient */
+/* Top Site Navigation Bar — Deep Obsidian Black (#000000) matching logo background seamlessly */
 header.sticky,
 body > div > header {
   position: sticky;
   top: 0;
   z-index: 100;
-  background: linear-gradient(135deg, rgba(12, 28, 64, 0.99) 0%, rgba(18, 38, 79, 0.99) 100%) !important;
+  background: #000000 !important;
   backdrop-filter: blur(24px) saturate(200%);
   -webkit-backdrop-filter: blur(24px) saturate(200%);
-  border-bottom: 1px solid rgba(249, 115, 22, 0.25) !important;
+  border-bottom: 1px solid rgba(124, 58, 237, 0.35) !important;
   transition: background-color var(--duration-normal) var(--ease-smooth), border-color var(--duration-normal) var(--ease-smooth);
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3), 0 1px 0 rgba(249, 115, 22, 0.15);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5), 0 1px 0 rgba(124, 58, 237, 0.2);
 }
 
 header.sticky.scrolled,
 body > div > header.scrolled {
-  background: linear-gradient(135deg, rgba(10, 22, 54, 0.99) 0%, rgba(14, 30, 62, 0.99) 100%) !important;
-  border-bottom-color: rgba(37, 99, 235, 0.4) !important;
-  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.35), 0 1px 0 rgba(37, 99, 235, 0.3);
+  background: rgba(0, 0, 0, 0.98) !important;
+  border-bottom-color: rgba(37, 99, 235, 0.45) !important;
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.6), 0 1px 0 rgba(37, 99, 235, 0.3);
 }
 
-/* Logo container in Header & Footer — frosted pill for razor-sharp logo visibility */
+/* Logo container in Header & Footer — exact presentation as provided, seamless transparent container */
 header.sticky a img,
 body > div > header a img,
 footer a img {
-  background: rgba(255, 255, 255, 0.97);
-  padding: 5px 12px;
-  border-radius: 12px;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.18), 0 0 0 1px rgba(255, 255, 255, 0.4);
-  backdrop-filter: blur(8px);
+  background: transparent !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.5));
 }
 
 /* Inner page content headers MUST be static & clean */
@@ -215,7 +230,7 @@ body > div > header nav a {
 
 header.sticky nav a:hover,
 body > div > header nav a:hover {
-  color: #FBA138 !important;
+  color: #8B5CF6 !important;
 }
 
 /* Chevron icons in nav */
@@ -227,7 +242,7 @@ body > div > header nav a svg {
 
 header.sticky nav a:hover svg,
 body > div > header nav a:hover svg {
-  color: #FBA138 !important;
+  color: #8B5CF6 !important;
 }
 
 /* Mobile menu button on header */
@@ -240,8 +255,8 @@ body > div > header #mobile-menu-btn {
 
 header.sticky #mobile-menu-btn:hover,
 body > div > header #mobile-menu-btn:hover {
-  border-color: #FBA138 !important;
-  background: rgba(249, 115, 22, 0.12) !important;
+  border-color: #8B5CF6 !important;
+  background: rgba(124, 58, 237, 0.12) !important;
 }
 
 /* -----------------------------------------------------------------------
@@ -262,18 +277,31 @@ header .nav-dropdown {
   border: 1px solid rgba(226, 232, 240, 0.9) !important;
 }
 
-/* Courses dropdown — warm amber accent, enforce 620px width */
+/* Desktop: Group hover triggers dropdown smoothly */
+header nav .group:hover > .nav-dropdown,
+header nav .group:focus-within > .nav-dropdown {
+  opacity: 1 !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
+  transform: translateY(0) !important;
+}
+
+header nav .group:hover svg.lucide-chevron-down {
+  transform: rotate(180deg) !important;
+}
+
+/* Courses dropdown — violet accent, enforce 620px width */
 header .courses-nav-dropdown {
   min-width: 620px !important;
   width: 620px !important;
-  border-top: 3px solid #F97316 !important;
-  border-left: 1px solid rgba(249, 115, 22, 0.3) !important;
-  border-right: 1px solid rgba(249, 115, 22, 0.3) !important;
-  border-bottom: 1px solid rgba(249, 115, 22, 0.3) !important;
+  border-top: 3px solid #7C3AED !important;
+  border-left: 1px solid rgba(124, 58, 237, 0.3) !important;
+  border-right: 1px solid rgba(124, 58, 237, 0.3) !important;
+  border-bottom: 1px solid rgba(124, 58, 237, 0.3) !important;
   box-shadow:
     0 24px 64px -12px rgba(15, 23, 42, 0.28),
-    0 4px 16px rgba(249, 115, 22, 0.06),
-    0 0 0 1px rgba(249, 115, 22, 0.15) !important;
+    0 4px 16px rgba(124, 58, 237, 0.06),
+    0 0 0 1px rgba(124, 58, 237, 0.15) !important;
 }
 
 /* Internships dropdown — royal blue accent, enforce 680px width */
@@ -310,9 +338,9 @@ header .courses-nav-dropdown a.group\/item {
 }
 
 header .courses-nav-dropdown a.group\/item:hover {
-  background: rgba(249, 115, 22, 0.06) !important;
-  border-color: rgba(249, 115, 22, 0.2) !important;
-  color: #EA580C !important;
+  background: rgba(124, 58, 237, 0.06) !important;
+  border-color: rgba(124, 58, 237, 0.2) !important;
+  color: #6D28D9 !important;
   transform: translateX(3px);
 }
 
@@ -324,7 +352,7 @@ header .courses-nav-dropdown a.group\/item span.text-\[13px\] {
 }
 
 header .courses-nav-dropdown a.group\/item:hover span.text-\[13px\] {
-  color: #EA580C !important;
+  color: #6D28D9 !important;
 }
 
 /* Dropdown item links — internships */
@@ -425,6 +453,8 @@ body > div > header .group:hover > .group-hover\:grid {
   border-bottom: 1px solid #E2E8F0 !important;
   box-shadow: 0 20px 40px rgba(15, 23, 42, 0.14);
   animation: slideDown 0.22s var(--ease-spring);
+  max-height: 85vh;
+  overflow-y: auto;
 }
 
 #mobile-menu a {
@@ -433,6 +463,65 @@ body > div > header .group:hover > .group-hover\:grid {
 
 #mobile-menu a:hover {
   color: #2563EB !important;
+}
+
+/* Mobile Dropdown Accordion */
+.mobile-dropdown-item {
+  border-radius: 14px;
+  transition: background-color 0.15s ease;
+}
+
+.mobile-dropdown-header {
+  user-select: none;
+  cursor: pointer;
+  border-radius: 12px;
+  transition: all 0.2s ease;
+}
+
+.mobile-dropdown-header:hover {
+  background: rgba(124, 58, 237, 0.06);
+}
+
+.mobile-dropdown-chevron {
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.mobile-dropdown-list {
+  display: none;
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Open on hover for devices with mouse / hover pointer */
+@media (hover: hover) {
+  .mobile-dropdown-item:hover .mobile-dropdown-list {
+    display: block !important;
+    opacity: 1 !important;
+    max-height: 800px !important;
+  }
+  .mobile-dropdown-item:hover .mobile-dropdown-chevron {
+    transform: rotate(180deg) !important;
+  }
+  .mobile-dropdown-item:hover .mobile-dropdown-header {
+    background: rgba(124, 58, 237, 0.08);
+  }
+}
+
+/* Open on click / tap */
+.mobile-dropdown-item.is-open .mobile-dropdown-list {
+  display: block !important;
+  opacity: 1 !important;
+  max-height: 800px !important;
+}
+
+.mobile-dropdown-item.is-open .mobile-dropdown-chevron {
+  transform: rotate(180deg) !important;
+}
+
+.mobile-dropdown-item.is-open .mobile-dropdown-header {
+  background: rgba(124, 58, 237, 0.08);
 }
 
 @keyframes slideDown {
@@ -452,43 +541,149 @@ body > div > header .group:hover > .group-hover\:grid {
 body > div > main > section.relative.py-20.max-w-7xl:first-child,
 main > section.relative.py-20:first-of-type {
   position: relative;
-  background: radial-gradient(circle at 50% 10%, rgba(37, 99, 235, 0.25) 0%, transparent 60%),
-              linear-gradient(180deg, #12264F 0%, #0E1E3E 100%) !important;
+  background: radial-gradient(circle at 25% 15%, rgba(124, 58, 237, 0.10) 0%, transparent 45%),
+              radial-gradient(circle at 80% 20%, rgba(37, 99, 235, 0.10) 0%, transparent 45%),
+              linear-gradient(180deg, rgba(238, 242, 248, 0.95) 0%, rgba(244, 247, 251, 0.75) 60%, rgba(240, 244, 248, 0.4) 100%) !important;
   max-width: 100% !important;
   width: 100% !important;
   padding-left: max(1.5rem, calc((100% - 80rem) / 2)) !important;
   padding-right: max(1.5rem, calc((100% - 80rem) / 2)) !important;
-  border-bottom: 1px solid rgba(37, 99, 235, 0.25) !important;
-  box-shadow: 0 20px 40px -15px rgba(15, 23, 42, 0.2);
+  border-bottom: 1px solid rgba(148, 163, 184, 0.25) !important;
+  box-shadow: 0 4px 24px -8px rgba(15, 23, 42, 0.05);
   margin-top: 0 !important;
 }
 
-/* Hero Heading — Pure White on Navy Background */
+/* Hero Heading — Deep Navy on Light Background */
 body > div > main > section.relative.py-20:first-child h1,
 main > section.relative.py-20:first-of-type h1 {
-  color: #FFFFFF !important;
-  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
+  color: #12264F !important;
+  text-shadow: none;
 }
 
-/* Hero Subtitle — Light Silver Slate */
+/* Hero Subtitle — Slate on Light Background */
 body > div > main > section.relative.py-20:first-child p.text-lg,
 main > section.relative.py-20:first-of-type p.text-lg {
-  color: #CBD5E1 !important;
+  color: #475569 !important;
 }
 
 /* Hero Pill Badge ONLY (direct child div) */
 body > div > main > section.relative.py-20:first-child > div.inline-flex.rounded-full,
 main > section.relative.py-20:first-of-type > div.inline-flex.rounded-full {
-  background: rgba(249, 115, 22, 0.18) !important;
-  border-color: rgba(249, 115, 22, 0.5) !important;
-  color: #FDBA74 !important;
+  background: rgba(124, 58, 237, 0.10) !important;
+  border-color: rgba(124, 58, 237, 0.35) !important;
+  color: #6D28D9 !important;
 }
 
-/* Hero Cards — Floating White Cards on Navy */
+/* Hero Cards — Floating White Cards on Light Background */
 body > div > main > section.relative.py-20:first-child div.bg-\[var\(--surface-900\)\],
 main > section.relative.py-20:first-of-type div.bg-\[var\(--surface-900\)\] {
   background-color: #FFFFFF !important;
-  box-shadow: 0 24px 50px -12px rgba(0, 0, 0, 0.35), 0 0 0 1px rgba(255, 255, 255, 0.1) !important;
+  box-shadow: 0 8px 30px -8px rgba(124, 58, 237, 0.12), 0 0 0 1px rgba(124, 58, 237, 0.08) !important;
+}
+
+/* ==========================================================================
+   4b. Professional Background Styling for All Page Sections
+   (Excludes Header, Footer, Hero Section where already applied, and CTA Banner)
+   ========================================================================== */
+
+/* Key Facts Summary Sections across all pages */
+section[aria-label="Key Facts Summary"] {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(246, 249, 252, 0.98) 100%) !important;
+  border: 1px solid rgba(203, 213, 225, 0.85) !important;
+  box-shadow: 0 8px 30px -4px rgba(15, 23, 42, 0.06), 0 0 0 1px rgba(226, 232, 240, 0.5) !important;
+  border-radius: 24px !important;
+}
+
+/* Core Content Sections on About Page & Sub-Pages */
+section#what-we-do,
+section#technology-domains,
+section#vision-mission {
+  background: linear-gradient(135deg, rgba(238, 242, 248, 0.92) 0%, rgba(245, 248, 252, 0.92) 100%) !important;
+  border: 1px solid rgba(203, 213, 225, 0.8) !important;
+  border-radius: 28px !important;
+  padding: 3rem 2rem !important;
+  box-shadow: 0 8px 30px -4px rgba(15, 23, 42, 0.05), 0 0 0 1px rgba(226, 232, 240, 0.4) !important;
+}
+
+section#learning-approach,
+section#audiences {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(248, 250, 252, 0.98) 100%) !important;
+  border: 1px solid rgba(226, 232, 240, 0.95) !important;
+  border-radius: 28px !important;
+  padding: 3rem 2rem !important;
+  box-shadow: 0 8px 30px -4px rgba(15, 23, 42, 0.05), 0 0 0 1px rgba(226, 232, 240, 0.6) !important;
+}
+
+section#why-skilleze {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(245, 243, 255, 0.9) 100%) !important;
+  border: 1px solid rgba(124, 58, 237, 0.25) !important;
+  box-shadow: 0 12px 36px -6px rgba(124, 58, 237, 0.08), 0 0 0 1px rgba(124, 58, 237, 0.1) !important;
+  border-radius: 28px !important;
+}
+
+section#visit-us {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(246, 249, 252, 0.98) 100%) !important;
+  border: 1px solid rgba(203, 213, 225, 0.85) !important;
+  box-shadow: 0 12px 40px -8px rgba(15, 23, 42, 0.08) !important;
+  border-radius: 28px !important;
+}
+
+/* Index Page: Popular Tech Courses Section */
+body > div > main > section.py-16.max-w-7xl:nth-of-type(3),
+main > section.py-16.max-w-7xl.space-y-10:not(#about) {
+  background: linear-gradient(135deg, rgba(238, 242, 248, 0.92) 0%, rgba(245, 248, 252, 0.92) 100%) !important;
+  border: 1px solid rgba(203, 213, 225, 0.8) !important;
+  border-radius: 32px !important;
+  box-shadow: 0 8px 32px -4px rgba(15, 23, 42, 0.05) !important;
+  padding: 3.5rem 2rem !important;
+  margin-top: 2.5rem !important;
+  margin-bottom: 2.5rem !important;
+}
+
+/* Index Page: Decision Matrix Banner Card */
+main > section.max-w-5xl.my-12 {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(246, 249, 252, 0.98) 100%) !important;
+  border: 1px solid rgba(124, 58, 237, 0.25) !important;
+  box-shadow: 0 12px 36px -6px rgba(124, 58, 237, 0.08) !important;
+  border-radius: 28px !important;
+}
+
+/* Index Page: Why Skilleze Is Different Section */
+main > section#about {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(248, 250, 252, 0.98) 100%) !important;
+  border: 1px solid rgba(226, 232, 240, 0.95) !important;
+  border-radius: 32px !important;
+  box-shadow: 0 8px 32px -4px rgba(15, 23, 42, 0.05) !important;
+  padding: 3.5rem 2rem !important;
+  margin-top: 2.5rem !important;
+  margin-bottom: 2.5rem !important;
+}
+
+/* Related Content & Resource Guides Sections across all pages */
+section[aria-labelledby="related-content-heading"] {
+  background: linear-gradient(135deg, rgba(248, 250, 252, 0.95) 0%, rgba(241, 245, 249, 0.95) 100%) !important;
+  border: 1px solid rgba(226, 232, 240, 0.9) !important;
+  border-radius: 28px !important;
+  padding: 2.5rem 2rem !important;
+  margin-top: 2.5rem !important;
+  box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.04) !important;
+}
+
+/* Trust Stack Section at bottom of Homepage */
+section[aria-labelledby="trust-stack-heading"] {
+  background: linear-gradient(180deg, rgba(238, 242, 248, 0.95) 0%, rgba(245, 247, 251, 0.95) 100%) !important;
+  border-top: 1px solid rgba(203, 213, 225, 0.8) !important;
+  border-bottom: 1px solid rgba(203, 213, 225, 0.8) !important;
+}
+
+/* Generic content sections on sub-pages (internships, contact, faq, etc.) */
+main > div.max-w-7xl > section:not([aria-label="Key Facts Summary"]):not(.bg-gradient-to-br):not([aria-labelledby="related-content-heading"]):not(#what-we-do):not(#technology-domains):not(#vision-mission):not(#learning-approach):not(#audiences):not(#why-skilleze):not(#visit-us),
+main > section:not(.relative.py-20):not(.bg-gradient-to-br):not([aria-label="Key Facts Summary"]):not([aria-labelledby="related-content-heading"]):not([aria-labelledby="trust-stack-heading"]):not(#about) {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(246, 249, 252, 0.95) 100%);
+  border: 1px solid rgba(226, 232, 240, 0.85);
+  border-radius: 28px;
+  padding: 2.5rem 1.75rem;
+  box-shadow: 0 6px 24px -4px rgba(15, 23, 42, 0.04);
 }
 
 /* ==========================================================================
@@ -524,18 +719,18 @@ a.inline-flex:active {
   transform: scale(0.97) !important;
 }
 
-/* Primary Button (Warm Amber-Orange CTA — Navy text per user specification) */
+/* Primary Button (Violet/Purple CTA) */
 .btn-primary,
 button.bg-\[var\(--gold-400\)\],
 a.bg-\[var\(--gold-400\)\],
 button.bg-\[var\(--gold-500\)\],
 a.bg-\[var\(--gold-500\)\] {
-  background: linear-gradient(135deg, #FBA138 0%, #F97316 50%, #EA580C 100%) !important;
-  color: #12264F !important;
+  background: linear-gradient(135deg, #8B5CF6 0%, #7C3AED 50%, #6D28D9 100%) !important;
+  color: #FFFFFF !important;
   font-weight: 800 !important;
   letter-spacing: 0.01em;
-  border: 1px solid rgba(249, 115, 22, 0.7) !important;
-  box-shadow: 0 4px 16px rgba(249, 115, 22, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.35) !important;
+  border: 1px solid rgba(124, 58, 237, 0.7) !important;
+  box-shadow: 0 4px 16px rgba(124, 58, 237, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.25) !important;
 }
 
 .btn-primary:hover,
@@ -543,25 +738,25 @@ button.bg-\[var\(--gold-400\)\]:hover,
 a.bg-\[var\(--gold-400\)\]:hover,
 button.bg-\[var\(--gold-500\)\]:hover,
 a.bg-\[var\(--gold-500\)\]:hover {
-  background: linear-gradient(135deg, #FDBA74 0%, #FBA138 60%, #F97316 100%) !important;
-  color: #0B1938 !important;
-  box-shadow: 0 8px 26px rgba(249, 115, 22, 0.42) !important;
+  background: linear-gradient(135deg, #A78BFA 0%, #8B5CF6 60%, #7C3AED 100%) !important;
+  color: #FFFFFF !important;
+  box-shadow: 0 8px 26px rgba(124, 58, 237, 0.42) !important;
   transform: translateY(-2px);
 }
 
-/* Ensure text-[#0A0A0C] on primary buttons uses Deep Navy */
+/* Ensure text on primary violet buttons is white */
 button.text-\[\#0A0A0C\],
 .btn-primary.text-\[\#0A0A0C\],
 a.bg-\[var\(--gold-400\)\].text-\[\#0A0A0C\],
 button.bg-\[var\(--gold-400\)\],
 button.bg-\[var\(--gold-400\)\] span,
 button.bg-\[var\(--gold-400\)\] svg {
-  color: #12264F !important;
+  color: #FFFFFF !important;
 }
 
 button.bg-\[var\(--gold-400\)\]:hover span,
 button.bg-\[var\(--gold-400\)\]:hover svg {
-  color: #0B1938 !important;
+  color: #FFFFFF !important;
 }
 
 /* Secondary Button (Royal Blue) */
@@ -649,14 +844,14 @@ div.rounded-2xl.bg-\[var\(--surface-900\)\]:hover {
   box-shadow: var(--shadow-card-hover);
 }
 
-/* Course Card (Warm Orange Accent Border) */
+/* Course Card (Violet Accent Border) */
 div.border-2.border-\[var\(--gold-400\)\]\/60 {
-  border-color: rgba(249, 115, 22, 0.45) !important;
+  border-color: rgba(124, 58, 237, 0.45) !important;
 }
 
 div.border-2.border-\[var\(--gold-400\)\]\/60:hover {
-  border-color: #F97316 !important;
-  box-shadow: 0 20px 40px -10px rgba(15, 23, 42, 0.12), 0 0 25px rgba(249, 115, 22, 0.18) !important;
+  border-color: #7C3AED !important;
+  box-shadow: 0 20px 40px -10px rgba(15, 23, 42, 0.12), 0 0 25px rgba(124, 58, 237, 0.18) !important;
 }
 
 /* Internship Card (Royal Blue Accent Border) */
@@ -680,10 +875,10 @@ div.inline-flex.rounded-full {
   transition: all var(--duration-fast) var(--ease-smooth);
 }
 
-/* Pill Accent — Warm Orange */
+/* Pill Accent — Violet */
 span.text-\[var\(--gold-text\)\],
 div.text-\[var\(--gold-text\)\] {
-  color: #EA580C !important;
+  color: #6D28D9 !important;
 }
 
 /* Pill Accent — Royal Blue */
@@ -812,10 +1007,10 @@ summary::-webkit-details-marker {
    ========================================================================== */
 section.bg-gradient-to-br,
 .cta-banner {
-  background: radial-gradient(circle at 50% 0%, rgba(37, 99, 235, 0.12) 0%, transparent 60%),
-              linear-gradient(135deg, #12264F 0%, #1A3668 100%) !important;
-  border: 1px solid rgba(37, 99, 235, 0.35) !important;
-  box-shadow: 0 24px 60px -12px rgba(15, 23, 42, 0.18), var(--shadow-glowCyan) !important;
+  background: radial-gradient(circle at 50% 0%, rgba(124, 58, 237, 0.15) 0%, transparent 60%),
+              linear-gradient(135deg, #12264F 0%, #1E1060 50%, #1A3668 100%) !important;
+  border: 1px solid rgba(124, 58, 237, 0.35) !important;
+  box-shadow: 0 24px 60px -12px rgba(15, 23, 42, 0.18), 0 0 25px rgba(124, 58, 237, 0.12) !important;
   color: #FFFFFF !important;
 }
 
@@ -909,9 +1104,9 @@ section.bg-gradient-to-br .text-\[var\(--text-muted\)\],
 footer,
 body > div > footer,
 footer.bg-\[var\(--surface-950\)\] {
-  background-color: #12264F !important;
+  background-color: #000000 !important;
   color: #FFFFFF !important;
-  border-top: 1px solid rgba(255, 255, 255, 0.12) !important;
+  border-top: 1px solid rgba(124, 58, 237, 0.35) !important;
 }
 
 footer a {
@@ -920,7 +1115,7 @@ footer a {
 }
 
 footer a:hover {
-  color: #FBA138 !important;
+  color: #A78BFA !important;
 }
 
 footer h3,
