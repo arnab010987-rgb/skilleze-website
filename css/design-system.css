@@ -1098,6 +1098,18 @@ section.bg-gradient-to-br .text-\[var\(--text-muted\)\],
   transform: translateY(-2px);
 }
 
+/* Mobile responsive rules for floating widgets to prevent overlap with sticky mobile bottom action bar */
+@media (max-width: 767px) {
+  .floating-whatsapp-widget {
+    display: none !important;
+  }
+
+  .back-to-top-btn {
+    bottom: calc(76px + env(safe-area-inset-bottom, 0px));
+    left: 16px;
+  }
+}
+
 /* ==========================================================================
    13. Footer Styling — Deep Navy (#12264F)
    ========================================================================== */

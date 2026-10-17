@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     if (isCourses || isInternships) {
                         const links = Array.from(sec.querySelectorAll('a'));
                         const title = isCourses ? 'Courses' : 'Internships';
-                        const badgeText = isCourses ? '9 Tracks' : 'Industrial Tracks';
+                        const badgeText = isCourses ? 'Career Tracks' : 'Industrial Tracks';
                         const accentColor = isCourses ? 'var(--gold-text)' : 'var(--cyan-500)';
                         const dotColor = isCourses ? 'var(--gold-400)' : 'var(--cyan-500)';
 
